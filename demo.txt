@@ -1,0 +1,45 @@
+$ python3 gemini4_neon.py chat --mock --thinking-level high "Say hello in one sentence."
+Request JSON (would be sent to https://generativelanguage.googleapis.com/v1beta/models/gemini-4-neon:generateContent):
+
+{
+  "model": "gemini-4-neon",
+  "contents": [
+    {
+      "parts": [
+        {
+          "text": "Say hello in one sentence."
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "thinkingLevel": "high"
+    },
+    "maxOutputTokens": 1024
+  }
+}
+
+[SIMULATED RESPONSE — no network call was made, no API key used]
+This is a SIMULATED reply from gemini-4-neon. No network call was made and no API key was used. Run without --mock (with GEMINI_API_KEY set) to get a real answer to: 'Say hello in one sentence.'
+
+Simulated usage: 6 input + 48 output tokens (chars/4 estimate) — would cost $0.000738 at the Standard tier. Neon has NO free tier: even this first call would be billed.
+exit=0
+
+$ python3 gemini4_neon.py estimate --input-chars 10000 --output-tokens 500
+Input: 10000 chars ~= 2500 tokens (chars/4 estimate — verify with a tokenizer for exact counts)
+Output: 500 tokens
+
+Tier              Input       Output        Total
+Standard   $   0.007500 $   0.007500 $   0.015000
+Batch      $   0.003750 $   0.003750 $   0.007500
+Flex       $   0.003750 $   0.003750 $   0.007500
+Priority   $   0.013500 $   0.013500 $   0.027000
+
+Batch/Flex cost 0.50x Standard; Priority costs 1.80x Standard.
+Prices per 1M tokens: Standard $3.00 in / $0.15 cached / $15.00 out; Batch/Flex $1.50 / $7.50; Priority $5.40 / $27.00.
+
+From Dec 1, the same request on Gemini 4 Carbon costs $0.0200 (at $4.00/$20.00) vs $0.0150 on Neon Standard — Neon is 25% cheaper.
+
+Selected tier: Standard ($3.00 in / $15.00 out per 1M tokens)
+exit=0
